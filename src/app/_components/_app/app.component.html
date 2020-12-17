@@ -1,0 +1,22 @@
+<!-- The navigation bar resides at the top-->
+<app-navbar></app-navbar>
+
+
+<!-- Contains the sidebar to the left, and the application content to the right -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <app-sidebar>loading...</app-sidebar>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div id="content">
+        <!-- The router populates the router-outlet with content -->
+        <router-outlet> </router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <script src="node_modules/chart.js/src/chart.js"></script> -->
+

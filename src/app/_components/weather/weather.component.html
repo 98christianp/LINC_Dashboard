@@ -1,0 +1,12 @@
+<h1 class="page-header">{{title}}</h1>
+
+<div class="row placeholders" *mobxAutorun="{detach: true}">
+  <div class="col-xs-6 col-sm-3" *ngFor="let placeholder of weatherStore.items">
+    <div>
+    <app-loading *ngIf="weatherStore.loading"></app-loading>
+    <img *ngIf="!weatherStore.loading" src={{placeholder.imageref}} width="150" height="150">
+    <h4 *ngIf="!weatherStore.loading">{{placeholder.count }}</h4>
+    <!--<span class="text-muted" *ngIf="ready">{{placeholder.title}}</span> -->
+    </div>
+  </div>
+</div>

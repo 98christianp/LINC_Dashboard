@@ -1,0 +1,10 @@
+<div class="col-md-4">
+  <div class="card">
+    <img [src]="imageSource" class="card-img-top" alt="category-icon" style="width:100px; height:100px;">
+    <div class="card-body">
+      <h5 class="card-title">{{category.title}}</h5>
+      <p class="card-text"> {{category.category}}</p>
+      <a (click)="openDialog()" class="btn btn-primary">Edit Category</a>
+    </div>
+  </div>
+</div>

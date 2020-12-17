@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- This burgermenu-button is only showed when on mobile-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" (click)="toggleNavbar(true)">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- The company name is displayed at the top right-->
+      <a class="navbar-brand" [routerLink]="['dashboard']">LINC</a>
+    </div>
+
+    <!-- The actual navigation links-->
+    <div id="navbar" class="navbar-collapse collapse" [ngClass]="{ 'show': navbarOpen }">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- These are only shown if on mobile. They are displayed in the sidebar on web -->
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['dashboard']">Overview</a></li>
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['weather']">Weather</a></li>
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['bus']">Busses</a></li>
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['beacon']">Beacons</a></li>
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['export']">Export data</a></li>
+        <li *ngIf="showEkstra" (click)="toggleNavbar(false)"><a [routerLink]="['questionnaire']">Questionnaires</a></li>
+        <li *ngIf="showEkstra"><div style="text-align: center;color:white">__________</div></li>
+
+        <!-- These are always shown, both on mobile and on web -->
+        <li (click)="toggleNavbar(false)"><a [routerLink]="['settings']">Settings</a></li>
+        <li (click)="toggleNavbar(false)"><a [routerLink]="['profile']">Profile</a></li>
+        <li (click)="toggleNavbar(false)"><a [routerLink]="['help']">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

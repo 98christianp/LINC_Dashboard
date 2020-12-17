@@ -1,0 +1,23 @@
+.submenu {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease;
+}
+
+.submenu.active {
+  height: auto;
+}
+
+.submenu a {
+  display: block;
+  text-decoration: none;
+  color: #d9d9d9;
+  padding: 12px;
+  padding-left: 42px;
+  transition: all 0.25s ease-in-out;
+}
+
+.submenu a:hover {
+  background: #b63b4d;
+  color: #fff;
+}

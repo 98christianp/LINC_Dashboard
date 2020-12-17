@@ -1,0 +1,54 @@
+<h1 class="page-header">{{title}}</h1>
+WIP...
+Below table is a placeholder
+<div class = "container-fluid">
+<div class = "row">
+    <div class = "col-md-8">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Responses</th>
+                <th>SentOut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let q of questionnaires" (click)="changeID(q)" [class.active]="currentQuestionnaire === q">
+                <td>{{q.name}}</td>
+                <td>{{q.Description}}</td>
+                <td>{{q.Responses}}</td>
+                <td>{{q.SentOut}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Buttons -->
+          <div class = "row">
+            <div class="col-md-2">
+              <a class="btn btn-primary" (click)="goToNew()">
+                New Questionnaire
+              </a>
+            </div>
+            <div class = "col-md-2">
+              <a class="btn btn-primary" (click)="goToEdit()">Edit Questionnaire</a>
+            </div>
+            <div class = "col-md-2">
+              <div class="ml-2"><a class="btn btn-primary" role="button" aria-pressed="true" (click)="downloadTableData()">Download csv</a></div>
+            </div>
+          </div>
+    </div>
+    <div class = "col-md-4">
+        <h2>Current Questionnaire</h2>
+        <div>Questions: {{currentQuestionnaire.name}}</div>
+        <div>Sent Out: {{currentQuestionnaire.SentOut}} times</div>
+        <div>Responses: {{currentQuestionnaire.Responses}}</div>
+        <div>Link: <a href="{{currentQuestionnaire.link}}" target = "_blank">{{currentQuestionnaire.link}}</a></div>
+        <div>
+          Rules:
+          <ul >
+              <li *ngFor="let rule of currentQuestionnaire.rules">{{rule}}</li>
+          </ul>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<h1 class="page-header">{{title}}</h1>
+<div class="container-fluid"> <!-- If Needed Left and Right Padding in 'md' and 'lg' screen means use container class -->
+  <div class="row">
+      <div class="col-md-4">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Payload</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let key of getKeys()" (click)="changeID(key); setCenter([this.buses[key]['lon'], this.buses[key]['lat'] ])" [class.active]="selected === key">
+                <td>{{key}}</td>
+                <td>{{buses[key].payload}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+<!--        <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="downloadTableData()">Download csv</a>-->
+      </div>
+      <div class="col-md-8">
+        <div class="container-fluid" *ngIf="this.buses" style="height: 100%; min-height: 60vh;">
+          <mgl-map [style]="'mapbox://styles/thetoucan/ck6hopufq0s3d1ipfnrut4vmn'" [zoom]="[zoom]" [center]="center">
+            <ng-container
+              *ngFor="let key of getKeys()">
+              <mgl-marker
+                #bus
+                [lngLat]="[this.buses[key]['lon'], this.buses[key]['lat'] ]">
+                <div
+                  [ngStyle]="{
+            'background-image': busMarker(this.buses[key]['emergency_stop']),
+            'background-size': 'cover',
+            'width': '50px',
+            'height': '80px',
+            'cursor': 'pointer'
+          }"
+                >
+                </div>
+              </mgl-marker>
+              <mgl-popup [marker]="bus">
+                {{key}}
+              </mgl-popup>
+            </ng-container>
+          </mgl-map>
+        </div>
+<!--        if empty buses, show empoty map-->
+        <div class="container-fluid" *ngIf="!this.buses" style="height: 100%; min-height: 60vh;">
+          <mgl-map [style]="'mapbox://styles/thetoucan/ck6hopufq0s3d1ipfnrut4vmn'" [zoom]="[zoom]" [center]="center">
+          </mgl-map>
+        </div>
+      </div>
+  </div>
+  <div class="row" *ngIf="selected !== 'x'">
+    <p>Doorstate: {{this.buses[selected]['door_state']}}</p>
+    <p>Batterey: {{this.buses[selected]['battery_level']}}</p>
+    <p>Out temp: {{this.buses[selected]['outside_temperature']}}</p>
+    <p>In temp: {{this.buses[selected]['inside_temperature']}}</p>
+    <p>Speed: {{this.buses[selected]['speed']}}</p>
+  </div>
+</div>
+
+

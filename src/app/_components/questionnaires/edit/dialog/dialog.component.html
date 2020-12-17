@@ -1,0 +1,23 @@
+<div class = "row">
+  <div class = "col-md-9"><h1 mat-dialog-title>New Rule</h1></div>
+  <div class = "col-md-3"><div class="text-right">
+      <button mat-icon-button (click)="onNoClick()">
+          <mat-icon>close</mat-icon>
+        </button>
+  </div></div>
+</div>
+
+
+
+<div mat-dialog-content>
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="data.response" name=response>
+      </mat-form-field>
+    </form>      
+</div>
+
+
+<div mat-dialog-actions>
+<button mat-stroked-button [mat-dialog-close]="data.response" cdkFocusInitial>Submit</button>
+</div>
