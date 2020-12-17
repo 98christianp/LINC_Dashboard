@@ -1,0 +1,23 @@
+<h2 class="sub-header">Recent Activity</h2>
+<div class="table-responsive">
+  <table
+    data-pagination="true"
+    class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Message</th>
+        <th>Time</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instance of instances">
+        <td>{{instance.Data[0]}}</td>
+        <td>{{instance.Data[1]}}</td>
+        <td>{{instance.Data[2]}}</td>
+        <td>{{instance.Data[3]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <h1 class="page-header">
+    Monitoring and evaluation
+  </h1>
+
+  <app-loading *ngIf="active_users.loading; else elseBlock"></app-loading>
+  <ng-template #elseBlock>
+  <div class="row row-eq-height">
+    <div class="col-md-4 container-box">
+        <h4>Educated stewards</h4>
+        <h1 class="text-muted">{{this.stewardsStore.stewards.length}}</h1>
+  <!--  6) todo:educated stewards-->
+    </div>
+  <div class="col-md-4">
+      <div class="placeholder container-box">
+        <h4>Errors caused by hardware or emergency stop</h4>
+<!--        <canvas baseChart-->
+<!--                title="Last 24 hours"-->
+<!--                [datasets]="barChartData"-->
+<!--                [labels]="barChartLabels"-->
+<!--                [options]="barChartOptions1"-->
+<!--                [plugins]="barChartPlugins"-->
+<!--                [legend]="barChartLegend"-->
+<!--                [chartType]="barChartType">-->
+<!--        </canvas>-->
+        <span>
+          <p> Bus API: </p>
+          <h1 class="text-muted">0 </h1>
+        </span>
+        <p>Steward Event: </p>
+        <h1 class="text-muted">0</h1>
+      </div>
+      <!--  todo: 7) less than 1per day caused by hardware errors or emergency stop-->
+    </div>
+    <div class="col-md-4">
+      <div class="container-box" *mobxAutorun="{ detach: true }">
+        <h4>Minimum 500 registered  users</h4>
+          <canvas baseChart
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType">
+          </canvas>
+      </div>
+      <!-- todo: 12) minimum 500 registered users -->
+    </div>
+
+  </div>
+  <div class="row" style="padding-top: 20px">
+    <div class="col-md-4">
+      <div class="container-box placeholder">
+        <h4>Minimum 20% response rate on surveys</h4>
+      </div>
+      <!--  todo: minimum 20% response rate on surveys-->
+    </div>
+    <div class="col-md-4">
+      <div class="container-box placeholder">
+        <h4>Users with more than 2 registered trips</h4>
+        <h1 class="text-muted">0</h1>
+<!--        TODO:-->
+      </div>
+      <!--  todo: 16) target 250 users-->
+    </div>
+    <div class="col-md-4">
+      <app-loading *ngIf="active_users.loading"></app-loading>
+      <div *ngIf="!active_users.loading" class="container-box placeholder">
+        <h4> Minutes of active interactions per user</h4>
+        <div id="chart">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [yaxis]="chartOptions.yaxis"
+          ></apx-chart>
+        </div>
+<!--        <canvas baseChart-->
+<!--                title="Last 24 hours"-->
+<!--                [datasets]="barChartData2"-->
+<!--                [labels]="barChartLabels2"-->
+<!--                [options]="barChartOptions2"-->
+<!--                [plugins]="barChartPlugins"-->
+<!--                [legend]="barChartLegend2"-->
+<!--                [chartType]="barChartType">-->
+<!--        </canvas>-->
+      </div>
+      <!--  todo: 17) 20 minutess of active interactions per user per day-->
+    </div>
+   </div>
+  </ng-template>
+
+</div>

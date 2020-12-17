@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Preview</h2>
+<mat-dialog-content>
+  <strong>Title: </strong> <p>{{this.data.title}}</p>
+  <strong>Expiration: </strong> <p>{{this.data.expiration_date}}</p>
+  <strong>Sent: </strong> <p>{{this.data.sent_timestamp}}</p>
+  <strong>Type: </strong> <p>{{this.data.message_type}}</p>
+  <strong>Content: </strong>
+  <div [innerHTML]="this.safe_message_content"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">No Thanks</button>
+  <button mat-button (click)="send()" [mat-dialog-close]="true" cdkFocusInitial>Send</button>
+</mat-dialog-actions>

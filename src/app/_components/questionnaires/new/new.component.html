@@ -1,0 +1,108 @@
+<div class="example-container">
+  <h2 class="page-header">New Questionnaire</h2>
+<!--  first block-->
+  <mat-form-field appearance="fill">
+    <mat-label>Select target</mat-label>
+    <mat-select [(value)]="targetUser">
+      <mat-option value="all">All Registered Users</mat-option>
+      <mat-option value="active">Only Active Passengers</mat-option>
+    </mat-select>
+  </mat-form-field>
+<!--  2nd block-->
+  <div class="container-fluid" *ngIf="targetUser=='active'">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="h3 card-header">Survey link</div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Enter URL for questionnaire</mat-label>
+              <input matInput [(ngModel)]="url"  placeholder="https://www.example.com">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Unique survey name</mat-label>
+              <input [(ngModel)]="name" matInput placeholder="Survey 1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-12">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Description</mat-label>
+              <input matInput [(ngModel)]="desc" placeholder="To gauge user experience onboard shuttles">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="h3 card-header">Event rules</div>
+        <div class="row">
+          <div class="col-md-10">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>If</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let i of ifRules" [value]="rules">{{i}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-2">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Value (x)</mat-label>
+              <input matInput type="number" placeholder="Ex. 4" [(ngModel)]="ifVal">
+            </mat-form-field>
+          </div>
+          <div class="col-md-12">
+            <mat-form-field appearance="fill">
+              <mat-label>Value (x)</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let i of ifVariables" [value]="rules">{{i}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--option 2-->
+  <div class="container-fluid" *ngIf="targetUser=='all'">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="h3 card-header">Survey link</div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Enter URL for questionnaire</mat-label>
+              <input [(ngModel)]="url" matInput placeholder="https://www.example.com">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Unique survey name</mat-label>
+              <input [(ngModel)]="name" matInput placeholder="Survey 1">
+            </mat-form-field>
+          </div>
+          <div class="col-md-12">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Description</mat-label>
+              <input [(ngModel)]="desc" matInput placeholder="To gauge user experience onboard shuttles">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+    <div class="card">
+      <div class="h3 card-header">Event rules</div>
+        <div class="row">
+          <div class="col-md-12">
+            Rules not applicable when "all users" selected
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <button *ngIf="targetUser" (click)="save()" mat-raised-button color="primary">Save<span class="material-icons">archive</span></button>
+  {{makeSurvey()}}
+</div>

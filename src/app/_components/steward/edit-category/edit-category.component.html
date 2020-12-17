@@ -1,0 +1,14 @@
+<div mat-dialog-content class="popup">
+  <div class="row">
+      <h4>Edit category</h4>
+      <div>Title: <input [(ngModel)]="data.title" size="80vw"></div>
+      <div>Category: <input [(ngModel)]="data.category" size="80vw"></div>
+      <div>Icon: <input type="file" id="file" [(ngModel)]="data.icon"
+                        (change)="handleFileInput($event.target.files)">
+      </div>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

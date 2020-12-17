@@ -1,0 +1,41 @@
+<h1 class="page-header">{{title}}</h1>
+{{description}}
+<app-loading *ngIf="messageStore.loading"></app-loading>
+<div *ngIf="!messageStore.loading">
+  <h2>Current Active Messages: {{messageStore.messages.length}}</h2>
+</div>
+<div class = "container-fluid">
+  <div class = "row">
+    <div class = "col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Expiration date</th>
+          <th>Type</th>
+          <th>Content</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let message of messageStore.messages" (click)="changeID(message)" [class.active]="currentMessage === message">
+          <td>{{message.title}}</td>
+          <td>{{message.expiration_date.$date | date }}</td>
+          <td>{{message.message_type}}</td>
+          <!-- If text is longer than 30 characters -->
+          <td *ngIf="message.content.length > 60">{{message.content.substr(0,60)+'...'}}</td>
+          <td *ngIf="message.content.length <=60">{{message.content}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <!-- Buttons -->
+      <div class = "row">
+        <div class = "col-md-2">
+          <button class="btn btn-primary btn-lg" [disabled]="this.currentMessage === undefined" (click)="goToView()">View message</button>
+        </div>
+        <div class = "col-md-2">
+          <div class="ml-2"><a class="btn btn-primary btn-lg" role="button" aria-pressed="true" (click)="goToNew()">New Message</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

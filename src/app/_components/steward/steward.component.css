@@ -1,0 +1,9 @@
+.category {
+  height: 10vh;
+  width: 10vw;
+  background: rgba(145, 145, 145);
+}
+
+table {
+  width: 100%;
+}

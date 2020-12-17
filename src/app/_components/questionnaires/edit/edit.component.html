@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+
+<div class = "row">
+  <div class = "col-md-6">
+    <div>Questions: <input value="{{currentQuestionnaire.name}}" size="100%"></div>
+    <div>Link: <input value="{{currentQuestionnaire.link}}" size = "100%"></div>
+
+      <!-- The Rules come here -->
+      <div class="card">
+        <div class="h3 card-header">Rules</div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let rule of currentQuestionnaire.rules; let i=index" class="list-group-item">
+            <div class = "container-fluid">
+              <div class = "row">
+                <div class = "col-md-6">{{rule}}</div>
+                <div class = "col-md-6"><div class = "text-right"><button mat-button><mat-icon svgIcon="delete-icon" (click)="removeRule(i)"></mat-icon></button></div></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!--Button to add a new rule-->
+        <button mat-raised-button (click)="openDialog()">Add New Rule</button>
+      </div>
+
+
+      <!--Action buttons-->
+      <div class = "row-md-2">
+        <button mat-raised-button style="background-color: rgb(164, 221, 79); margin-top: 20px; margin-right: 10px;" (click)="saveChanges()">Save Changes</button>
+        <button mat-raised-button style="background-color: red;" (click)="deleteQuestionnaire()">Permenant Delete</button>
+      </div>
+  </div>
+
+
+
+  <!-- Component showing the responses to the questionnaires-->
+  <div class = "col-md-6">
+    <h3 class="text-center">Responses from Questionnaire</h3>
+    <h4 class="text-center">Total sent out: {{currentQuestionnaire.SentOut}}</h4>
+    <app-piechart *ngIf="chartData" [data]="chartData"></app-piechart>
+  </div>
+</div>

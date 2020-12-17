@@ -1,0 +1,12 @@
+
+<div class="row placeholders" *mobxAutorun="{ detach: true }">
+  <div style="visibility: hidden">{{this.userInfoStore.newestId}}</div>
+    <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let placeholder of userInfoStore.items">
+      <div>
+        <img src={{placeholder.imageref}} class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
+        <app-loading *ngIf="userInfoStore.loading"></app-loading>
+        <h4 *ngIf="!userInfoStore.loading">{{placeholder.count}}</h4>
+        <span class="text-muted" *ngIf="!userInfoStore.loading">{{placeholder.title}}</span>
+      </div>
+    </div>
+  </div>
